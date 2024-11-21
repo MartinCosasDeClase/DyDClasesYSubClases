@@ -28,7 +28,9 @@ class ClasesAdapter : ArrayAdapter<Clase> {
 
         name.text = clase?.nombre
 
-        Glide.with()
+        Glide.with(context).load(
+            clase?.imagen
+        ).into(img)
 
         return view
     }
