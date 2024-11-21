@@ -51,5 +51,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.retrofit)
     implementation(libs.converter.jackson)
+    implementation (libs.glide.v4151)
+    annotationProcessor(libs.compiler)
 
 }

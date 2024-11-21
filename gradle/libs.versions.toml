@@ -2,7 +2,10 @@
 agp = "8.6.1"
 bom = "2.46.2-rc.3"
 bomVersion = "VERSION"
+compiler = "4.15.1"
 converterJackson = "2.9.0"
+glide = "4.14.1"
+glideVersion = "4.15.1"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -23,7 +26,10 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 auth-kt = { module = "io.github.jan-tennert.supabase:auth-kt" }
 bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bom" }
 bom-vversion = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bomVersion" }
+compiler = { module = "com.github.bumtech.glide:compiler", version.ref = "compiler" }
 converter-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "converterJackson" }
+glide = { module = "com.github.bumtech.glide:glide", version.ref = "glide" }
+glide-v4151 = { module = "com.github.bumtech.glide:glide", version.ref = "glideVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
