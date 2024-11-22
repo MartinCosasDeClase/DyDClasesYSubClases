@@ -1,6 +1,5 @@
 package com.example.ddclasessubclases
 
-import com.fasterxml.jackson.core.JsonFactory
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 import retrofit2.http.GET
