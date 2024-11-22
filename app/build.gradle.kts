@@ -53,5 +53,10 @@ dependencies {
     implementation(libs.converter.jackson)
     implementation(libs.github.glide)
     annotationProcessor(libs.glide.compiler)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata)
+    implementation(libs.androidx.lifecycle.common.java8)
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
 
 }

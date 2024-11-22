@@ -11,6 +11,12 @@ interface RetrofitService {
         @Query("apikey") apikey:String,
         @Query("select") select:String = "*",
     ): ArrayList<Clase>
+
+    @GET("subClases")
+    suspend fun listaSubClases(
+        @Query("apikey") apikey: String,
+        @Query("select") select: String = "*",
+    ): ArrayList<SubClase>
 }
 object RetrofitServiceFactory{
     fun makeRetrofitService(): RetrofitService{

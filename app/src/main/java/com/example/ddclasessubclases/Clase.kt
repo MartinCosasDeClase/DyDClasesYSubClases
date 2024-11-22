@@ -1,8 +1,9 @@
 package com.example.ddclasessubclases
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
 
-class Clase {
+class Clase : Serializable{
     @JsonProperty("nombre") val nombre:String = ""
     @JsonProperty("descripcion") val descripcion:String = ""
     @JsonProperty("imagen") val imagen:String = ""

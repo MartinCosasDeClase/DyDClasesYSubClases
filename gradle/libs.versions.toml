@@ -16,15 +16,22 @@ espressoCore = "3.6.1"
 appcompat = "1.7.0"
 ktorClientAndroid = "3.0.1"
 ktorClientEngine_z = "KTOR_VERSION"
+lifecycleViewmodelKtx = "2.8.7"
 material = "1.12.0"
 constraintlayout = "2.1.4"
 navigationFragmentKtx = "2.8.3"
 navigationUiKtx = "2.8.3"
 retrofit = "2.9.0"
+roomRuntime = "2.6.1"
 serializerJackson = "VERSION"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-common-java8 = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycleViewmodelKtx" }
+androidx-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata", version.ref = "lifecycleViewmodelKtx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 auth-kt = { module = "io.github.jan-tennert.supabase:auth-kt" }
 bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bom" }
 bom-vversion = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bomVersion" }
