@@ -5,7 +5,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Clase.class}, version = 1)
+@Database(entities = {Clase.class ,SubClase.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
@@ -21,5 +21,6 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    public abstract ClaseDAO getPokemonDao();
+    public abstract ClaseDAO getClaseDao();
+    public abstract SubClaseDAO getSubClaseDao();
 }

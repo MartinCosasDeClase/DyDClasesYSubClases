@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -26,7 +27,7 @@ class FirstFragment : Fragment() {
 
 
     private var _binding: FragmentFirstBinding? = null
-    val alm = AlmacenarSubClases()
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -42,17 +43,27 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val clases = ArrayList<Clase>()
         val retroFT = RetrofitServiceFactory.makeRetrofitService()
+        val adapter = ClasesAdapter(
+            requireContext(),
+            R.layout.lst_item,
+            clases
+        );
+        binding.lstDnd.setOnItemClickListener { adapter, _,position, _ ->
+            val clase = adapter.getItemAtPosition(position) as Clase
+            val args = Bundle().apply {
+                putSerializable("item",clase)
+            }
 
-        lifecycleScope.launch {
-            val clases: ArrayList<Clase> = retroFT.listCLases("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5cmRrdnZyaGJjaWJubXljZnp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE2NjEwOTgsImV4cCI6MjA0NzIzNzA5OH0.pwMOzVqg5eDMn0ywTowo4HEakJCFFFozRiKJVKphpV4")
-            val adapter = ClasesAdapter(
-                requireContext(),
-                R.layout.lst_item,
-                clases
-            )
-            alm.subClases = retroFT.listaSubClases("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5cmRrdnZyaGJjaWJubXljZnp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE2NjEwOTgsImV4cCI6MjA0NzIzNzA5OH0.pwMOzVqg5eDMn0ywTowo4HEakJCFFFozRiKJVKphpV4")
-            binding.lstDnd.adapter=adapter
+            NavHostFragment.findNavController(this).navigate(R.id.action_FirstFragment_to_clases_details, args)
+
+        }
+
+        val model = ViewModelProvider(this).get(ClaseView::class.java)
+        model.clases.observe(viewLifecycleOwner){result ->
+            adapter.clear()
+            adapter.addAll(result)
         }
 
     }
@@ -63,16 +74,7 @@ class FirstFragment : Fragment() {
     }
 
     override fun onStart() {
-        binding.lstDnd.setOnItemClickListener { adapter, _,position, _ ->
 
-            alm.clase = adapter.getItemAtPosition(position) as Clase
-            val args = Bundle().apply {
-                putSerializable("item",alm)
-            }
-
-            NavHostFragment.findNavController(this).navigate(R.id.action_FirstFragment_to_clases_details, args)
-
-        }
         super.onStart()
     }
 

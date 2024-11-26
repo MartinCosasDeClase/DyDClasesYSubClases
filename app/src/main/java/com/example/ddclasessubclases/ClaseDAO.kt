@@ -20,6 +20,6 @@ interface ClaseDAO {
     @Delete
     fun deleteclase(clase: Clase)
 
-    @Query("DELETE from clases")
+    @Query("DELETE from clase")
     fun deleteClases()
 }
