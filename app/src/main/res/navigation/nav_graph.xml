@@ -17,5 +17,13 @@
     <fragment
         android:id="@+id/clases_details"
         android:name="com.example.ddclasessubclases.Clases_details"
-        tools:layout="@layout/fragment_clases_details" />
+        tools:layout="@layout/fragment_clases_details" >
+        <action
+            android:id="@+id/action_clases_details_to_subClases_details"
+            app:destination="@id/subClases_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/subClases_details"
+        android:name="com.example.ddclasessubclases.SubClases_details"
+        tools:layout="@layout/fragment_sub_clases_details" />
 </navigation>

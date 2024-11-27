@@ -1,9 +1,7 @@
 package com.example.ddclasessubclases
 
 import android.app.Application
-import android.content.ContentValues.TAG
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,21 +11,12 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.lifecycle.withStarted
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import com.example.ddclasessubclases.databinding.FragmentFirstBinding
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
-import retrofit2.http.Tag
 import java.util.concurrent.Executors
 
 /**
@@ -41,6 +30,11 @@ class FirstFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -98,12 +92,11 @@ class FirstFragment : Fragment() {
             claseView.reload()
         }
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_main, menu)
+        inflater.inflate(R.menu.menu_main,menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
-    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         Log.d("XXXMenu", id.toString())
@@ -113,10 +106,9 @@ class FirstFragment : Fragment() {
             return true
         }
         if(id == R.id.btnRefresh){
-            val classModel = ClaseView(app = Application())
-            lifecycleScope.launch {
-                classModel.reload()
-            }
+            Log.d("XXX","REFESH")
+            Toast.makeText(context,"Sabe usted que es lo que quiero?",Toast.LENGTH_LONG).show()
+            restart()
             return true
         }
         return super.onOptionsItemSelected(item)

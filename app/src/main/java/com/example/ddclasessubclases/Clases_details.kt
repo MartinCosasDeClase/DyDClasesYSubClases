@@ -97,12 +97,12 @@ class Clases_details : Fragment() {
             binding.lstSubclase.adapter = adapter
 
             binding.lstSubclase.setOnItemClickListener { adapter, _,position, _ ->
-                val subClase = adapter.getItemAtPosition(position) as Clase
+                val subClase = adapter.getItemAtPosition(position) as SubClase
                 val args = Bundle().apply {
                     putSerializable("item",subClase)
                 }
 
-                NavHostFragment.findNavController(this).navigate(R.id.action_FirstFragment_to_clases_details, args)
+                NavHostFragment.findNavController(this).navigate(R.id.action_clases_details_to_subClases_details, args)
 
             }
         }

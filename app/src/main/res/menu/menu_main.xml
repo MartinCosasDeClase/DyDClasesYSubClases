@@ -9,6 +9,7 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/btnRefresh"
+        android:icon="@drawable/motos"
         android:orderInCategory="101"
         android:title="Refresh"
         app:showAsAction="ifRoom" />
