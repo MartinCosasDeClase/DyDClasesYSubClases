@@ -2,6 +2,7 @@ package com.example.ddclasessubclases
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -9,10 +10,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.example.ddclasessubclases.databinding.FragmentClasesDetailsBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -86,7 +91,7 @@ class Clases_details : Fragment() {
                 updateUi(item)
             }
 
-            val model = ViewModelProvider(this).get(ClaseView::class.java)
+            val model = ViewModelProvider(this)[ClaseView::class.java]
             model.subClase.observe(viewLifecycleOwner){result ->
                 Log.d("XXX",result.toString())
                 adapter.clear()
@@ -96,7 +101,7 @@ class Clases_details : Fragment() {
             }
             binding.lstSubclase.adapter = adapter
 
-            binding.lstSubclase.setOnItemClickListener { adapter, _,position, _ ->
+            binding.lstSubclase.setOnItemClickListener(){ adapter, _,position, _ ->
                 val subClase = adapter.getItemAtPosition(position) as SubClase
                 val args = Bundle().apply {
                     putSerializable("item",subClase)
@@ -105,6 +110,7 @@ class Clases_details : Fragment() {
                 NavHostFragment.findNavController(this).navigate(R.id.action_clases_details_to_subClases_details, args)
 
             }
+
         }
     }
     @SuppressLint("SuspiciousIndentation")
@@ -117,5 +123,21 @@ class Clases_details : Fragment() {
         Glide.with(contexto).load(
             clase.imagen
         ).into(binding.imagenClase)
+
+        Glide.with(contexto)
+            .load(clase.fondo)
+            .into(object : CustomTarget<Drawable>() {
+                override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                    binding.fondo.background = resource
+                }
+
+                override fun onLoadCleared(placeholder: Drawable?) {
+                    TODO("Not yet implemented")
+                }
+            })
     }
 }
+
+
+
+

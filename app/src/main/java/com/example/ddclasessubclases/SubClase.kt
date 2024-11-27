@@ -13,9 +13,9 @@ class SubClase : Serializable{
     @JsonProperty("nombre") var nombre:String = ""
     @JsonProperty("descripcion") var descripcion:String = ""
     @JsonProperty("imagen") var imagen:String = ""
-
-
     override fun toString(): String {
         return "SubClase(id=$id, idClase=$idClase, nombre='$nombre', descripcion='$descripcion', imagen='$imagen')"
     }
+
+
 }
