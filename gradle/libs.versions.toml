@@ -24,6 +24,7 @@ navigationUiKtx = "2.8.3"
 retrofit = "2.9.0"
 roomRuntime = "2.6.1"
 serializerJackson = "VERSION"
+preference = "1.2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -56,6 +57,7 @@ realtime-kt = { module = "io.github.jan-tennert.supabase:realtime-kt" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 serializer-jackson = { module = "io.github.jan-tennert.supabase:serializer-jackson", version.ref = "serializerJackson" }
 supabase-postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
+androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

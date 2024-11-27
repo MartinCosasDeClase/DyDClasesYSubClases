@@ -8,7 +8,7 @@ import androidx.room.Query
 
 @Dao
 interface ClaseDAO {
-    @Query("select * from clase")
+    @Query("select * from Clase")
     fun getClases(): LiveData<List<Clase>>
 
     @Insert

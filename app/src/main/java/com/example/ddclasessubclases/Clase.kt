@@ -1,12 +1,21 @@
 package com.example.ddclasessubclases
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 @Entity
 class Clase : Serializable{
-    @JsonProperty("nombre") val nombre:String = ""
-    @JsonProperty("descripcion") val descripcion:String = ""
-    @JsonProperty("imagen") val imagen:String = ""
-    @JsonProperty("id") val id:Int = 0
+    @JsonProperty("nombre") var nombre:String = ""
+    @JsonProperty("descripcion") var descripcion:String = ""
+    @JsonProperty("imagen") var imagen:String = ""
+    @PrimaryKey
+    @JsonProperty("id") var id:Int = 0
+
+
+    override fun toString(): String {
+        return "Clase(nombre='$nombre', descripcion='$descripcion', imagen='$imagen', id=$id)"
+    }
+
+
 }

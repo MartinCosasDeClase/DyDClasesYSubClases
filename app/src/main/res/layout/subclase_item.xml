@@ -24,7 +24,7 @@
         android:fontFamily="@font/fuentednd"
         android:text="TextView"
         android:textAlignment="textStart"
-        android:textSize="34sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.759"

@@ -2,11 +2,16 @@ package com.example.ddclasessubclases
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import com.bumptech.glide.Glide
 import com.example.ddclasessubclases.databinding.FragmentClasesDetailsBinding
 
@@ -65,16 +70,41 @@ class Clases_details : Fragment() {
             }
     }
 
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val args: Bundle? = arguments
-
+        val subClase = ArrayList<SubClase>()
+        val adapter = SubClassAdapter(
+            requireContext(),
+            R.layout.subclase_item,
+            subClase
+        )
         if(args != null){
             val item:Clase? = args.getSerializable("item") as Clase?
             if (item != null){
                 updateUi(item)
             }
 
+            val model = ViewModelProvider(this).get(ClaseView::class.java)
+            model.subClase.observe(viewLifecycleOwner){result ->
+                Log.d("XXX",result.toString())
+                adapter.clear()
+                if (item != null) {
+                    adapter.addAll(result.stream().filter{a -> a.idClase == item.id}.toList())
+                }
+            }
+            binding.lstSubclase.adapter = adapter
+
+            binding.lstSubclase.setOnItemClickListener { adapter, _,position, _ ->
+                val subClase = adapter.getItemAtPosition(position) as Clase
+                val args = Bundle().apply {
+                    putSerializable("item",subClase)
+                }
+
+                NavHostFragment.findNavController(this).navigate(R.id.action_FirstFragment_to_clases_details, args)
+
+            }
         }
     }
     @SuppressLint("SuspiciousIndentation")

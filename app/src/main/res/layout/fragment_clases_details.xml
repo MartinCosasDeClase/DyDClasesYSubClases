@@ -7,8 +7,9 @@
     tools:context=".Clases_details" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="413dp"
-        android:layout_height="454dp"
+        android:layout_height="358dp"
         tools:layout_editor_absoluteX="-3dp"
         tools:layout_editor_absoluteY="1dp">
 
@@ -16,7 +17,10 @@
             android:id="@+id/nombre_clase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/fuentednd"
             android:text="TextView"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/imagenClase"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,22 +41,23 @@
             android:id="@+id/txt_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="113dp"
+            android:layout_marginTop="32dp"
             android:layout_marginBottom="16dp"
             android:text="LISTADO SUBCLASES:"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintHorizontal_bias="0.058"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_descripcion"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_descripcion" />
 
         <TextView
             android:id="@+id/txt_descripcion"
-            android:layout_width="217dp"
-            android:layout_height="112dp"
-            android:layout_marginBottom="112dp"
+            android:layout_width="361dp"
+            android:layout_height="103dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="68dp"
+            android:fontFamily="@font/fuentednd"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,8 +66,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
+        android:id="@+id/lst_subclase"
         android:layout_width="409dp"
-        android:layout_height="274dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="456dp" />
+        android:layout_height="379dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

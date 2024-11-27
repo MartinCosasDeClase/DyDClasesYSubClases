@@ -17,6 +17,5 @@
     <fragment
         android:id="@+id/clases_details"
         android:name="com.example.ddclasessubclases.Clases_details"
-        android:label="Detalles de la Clase"
         tools:layout="@layout/fragment_clases_details" />
 </navigation>
