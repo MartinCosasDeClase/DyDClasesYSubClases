@@ -7,7 +7,7 @@
             android:entries="@array/filtro"
             android:entryValues="@array/filtro"
             android:key="rol"
-            android:title="ROL" />
+            android:title="SELECTOR DE ROL" />
     </PreferenceCategory>
 
 </PreferenceScreen>
