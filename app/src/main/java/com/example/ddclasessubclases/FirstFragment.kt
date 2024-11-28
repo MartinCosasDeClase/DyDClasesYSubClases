@@ -73,14 +73,19 @@ class FirstFragment : Fragment() {
             val args = Bundle().apply {
                 putSerializable("item",clase)
             }
-
-            NavHostFragment.findNavController(this).navigate(R.id.action_FirstFragment_to_clases_details, args)
+            if(!isTablet()) {
+                NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_FirstFragment_to_clases_details, args)
+            }else{
+                NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_firstFragment_self2, args)
+            }
 
         }
         val rol = PreferenceManager.getDefaultSharedPreferences(context as Context)
         val opcion = rol.getString("rol","Todos")
         Log.d("XXXX",opcion.toString())
-        val model = ViewModelProvider(this).get(ClaseView::class.java)
+        val model = ViewModelProvider(this)[ClaseViewModel::class.java]
         model.clases.observe(viewLifecycleOwner){result ->
             Log.d("XXX",result.toString())
             adapterClass.clear()
@@ -90,16 +95,12 @@ class FirstFragment : Fragment() {
                 adapterClass.addAll(result)
         }
         binding.lstDnd.adapter = adapterClass
-        val executors = Executors.newSingleThreadExecutor()
-        executors.execute {
-            restart()
-        }
         super.onStart()
     }
     private fun restart(){
-        val claseView = ClaseView(app = Application())
+        val claseViewModel = ClaseViewModel(app = Application())
         lifecycleScope.launch {
-            claseView.reload()
+            claseViewModel.reload()
         }
     }
 
@@ -122,6 +123,9 @@ class FirstFragment : Fragment() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+    fun isTablet():Boolean{
+        return resources.getBoolean(R.bool.large)
     }
 
 }

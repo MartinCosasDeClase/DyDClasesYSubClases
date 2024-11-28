@@ -10,11 +10,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -91,7 +89,7 @@ class Clases_details : Fragment() {
                 updateUi(item)
             }
 
-            val model = ViewModelProvider(this)[ClaseView::class.java]
+            val model = ViewModelProvider(this)[ClaseViewModel::class.java]
             model.subClase.observe(viewLifecycleOwner){result ->
                 Log.d("XXX",result.toString())
                 adapter.clear()

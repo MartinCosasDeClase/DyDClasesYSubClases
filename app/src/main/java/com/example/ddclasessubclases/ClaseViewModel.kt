@@ -1,13 +1,11 @@
 package com.example.ddclasessubclases
 
 import android.app.Application
-import android.os.AsyncTask
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import org.jetbrains.annotations.Async
 import java.util.concurrent.Executors
 
-class ClaseView(private val app: Application) : AndroidViewModel(app) {
+class ClaseViewModel(private val app: Application) : AndroidViewModel(app) {
     private val appDatabase: AppDatabase = AppDatabase.getDatabase(
         this.getApplication()
     )
