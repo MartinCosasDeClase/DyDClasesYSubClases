@@ -11,23 +11,20 @@
         android:id="@+id/img_subclase"
         android:layout_width="155dp"
         android:layout_height="155dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="39dp"
         android:src="@drawable/motos"
-        app:layout_constraintBottom_toTopOf="@+id/txt_description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.319"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        app:layout_constraintVertical_bias="0.667" />
 
     <TextView
         android:id="@+id/txt_nombre"
-        android:layout_width="338dp"
-        android:layout_height="84dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/fuentednd"
         android:text="TextView"
         android:textAlignment="center"
@@ -36,13 +33,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/img_subclase"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.646" />
 
     <TextView
         android:id="@+id/txt_description"
-        android:layout_width="390dp"
-        android:layout_height="228dp"
+        android:layout_width="394dp"
+        android:layout_height="112dp"
         android:fontFamily="@font/fuentednd"
         android:text="TextView"
         android:textAlignment="center"
@@ -50,15 +49,15 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.761" />
+        app:layout_constraintVertical_bias="0.497" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="205dp" />
+        app:layout_constraintGuide_begin="365dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,10 @@
 package com.example.ddclasessubclases
 
 import android.app.Application
-import android.util.Log
+import android.os.AsyncTask
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import org.jetbrains.annotations.Async
 import java.util.concurrent.Executors
 
 class ClaseView(private val app: Application) : AndroidViewModel(app) {
@@ -17,7 +18,9 @@ class ClaseView(private val app: Application) : AndroidViewModel(app) {
     val subClase:LiveData<List<SubClase>>
         get() = subClaseDao.getSubClases()
 
-     suspend fun reload() {
+
+
+    suspend fun reload() {
          val executors = Executors.newSingleThreadExecutor()
          val clase = RetrofitServiceFactory.makeRetrofitService()
              .listCLases("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5cmRrdnZyaGJjaWJubXljZnp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE2NjEwOTgsImV4cCI6MjA0NzIzNzA5OH0.pwMOzVqg5eDMn0ywTowo4HEakJCFFFozRiKJVKphpV4")
@@ -31,5 +34,4 @@ class ClaseView(private val app: Application) : AndroidViewModel(app) {
          }
 
     }
-
 }

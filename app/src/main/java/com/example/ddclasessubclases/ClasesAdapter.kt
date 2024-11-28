@@ -32,6 +32,7 @@ class ClasesAdapter : ArrayAdapter<Clase> {
             clase?.imagen
         ).into(img)
 
+
         return view
     }
 

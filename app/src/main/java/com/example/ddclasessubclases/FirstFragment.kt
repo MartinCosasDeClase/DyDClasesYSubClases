@@ -1,7 +1,9 @@
 package com.example.ddclasessubclases
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,9 +14,11 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
+import androidx.preference.PreferenceManager
 import com.example.ddclasessubclases.databinding.FragmentFirstBinding
 import kotlinx.coroutines.launch
 import java.util.concurrent.Executors
@@ -56,6 +60,7 @@ class FirstFragment : Fragment() {
         _binding = null
     }
 
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onStart() {
         val clases = ArrayList<Clase>()
         val adapterClass = ClasesAdapter(
@@ -72,12 +77,17 @@ class FirstFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(R.id.action_FirstFragment_to_clases_details, args)
 
         }
-
+        val rol = PreferenceManager.getDefaultSharedPreferences(context as Context)
+        val opcion = rol.getString("rol","Todos")
+        Log.d("XXXX",opcion.toString())
         val model = ViewModelProvider(this).get(ClaseView::class.java)
         model.clases.observe(viewLifecycleOwner){result ->
             Log.d("XXX",result.toString())
             adapterClass.clear()
-            adapterClass.addAll(result)
+            if(opcion != "Todos" || opcion == null)
+                adapterClass.addAll(result.stream().filter{a -> a.rol.lowercase() == opcion?.lowercase()}.toList())
+            else
+                adapterClass.addAll(result)
         }
         binding.lstDnd.adapter = adapterClass
         val executors = Executors.newSingleThreadExecutor()
@@ -107,7 +117,7 @@ class FirstFragment : Fragment() {
         }
         if(id == R.id.btnRefresh){
             Log.d("XXX","REFESH")
-            Toast.makeText(context,"Sabe usted que es lo que quiero?",Toast.LENGTH_LONG).show()
+            Toast.makeText(context,"Cargando datos...",Toast.LENGTH_LONG).show()
             restart()
             return true
         }
