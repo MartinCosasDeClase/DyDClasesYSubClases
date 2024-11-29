@@ -21,7 +21,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
 import com.example.ddclasessubclases.databinding.FragmentFirstBinding
 import kotlinx.coroutines.launch
-import java.util.concurrent.Executors
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
